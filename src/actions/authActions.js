@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { SubmissionError } from 'redux-form';
+// import { SubmissionError } from 'redux-form';
 import history from '../utils/historyUtils';
-import { actions as notifActions } from 'redux-notifications';
-const { notifSend } = notifActions;
+// import { actions as notifActions } from 'redux-notifications';
+// const { notifSend } = notifActions;
 
 import { AuthTypes } from '../constants/actionTypes';
 import { AuthUrls } from '../constants/urls';
@@ -34,7 +34,7 @@ export function loginUser(formValues, dispatch, navigate) {
     })
     .catch((error) => {
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 
@@ -64,7 +64,7 @@ export function signupUser(formValues, dispatch, navigate) {
       // If request is bad...
       // Show an error to the user
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 
@@ -110,13 +110,13 @@ export function changePassword(formValues, dispatch, navigate) {
         },
       })
       .then((response) => {
-        dispatch(
-          notifSend({
-            message: 'Password has been changed successfully',
-            kind: 'info',
-            dismissAfter: 5000,
-          })
-        );
+        // dispatch(
+        //   notifSend({
+        //     message: 'Password has been changed successfully',
+        //     kind: 'info',
+        //     dismissAfter: 5000,
+        //   })
+        // );
         // redirect to the route '/profile'
         navigate('/profile');
       })
@@ -124,7 +124,7 @@ export function changePassword(formValues, dispatch, navigate) {
         // If request is bad...
         // Show an error to the user
         const processedError = processServerError(error.response.data);
-        throw new SubmissionError(processedError);
+        // throw new SubmissionError(processedError);
       });
   }
 }
@@ -142,7 +142,7 @@ export function resetPassword(formValues, dispatch, navigate) {
       // If request is bad...
       // Show an error to the user
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 
@@ -154,13 +154,13 @@ export function confirmPasswordChange(formValues, dispatch, props) {
   return axios
     .post(resetPasswordConfirmUrl, data)
     .then((response) => {
-      dispatch(
-        notifSend({
-          message: 'Password has been reset successfully, please log in',
-          kind: 'info',
-          dismissAfter: 5000,
-        })
-      );
+      // dispatch(
+      //   notifSend({
+      //     message: 'Password has been reset successfully, please log in',
+      //     kind: 'info',
+      //     dismissAfter: 5000,
+      //   })
+      // );
 
       history.push('/login');
     })
@@ -168,7 +168,7 @@ export function confirmPasswordChange(formValues, dispatch, props) {
       // If request is bad...
       // Show an error to the user
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 
@@ -180,14 +180,14 @@ export function activateUserAccount(formValues, dispatch, props) {
   return axios
     .post(activateUserUrl, data)
     .then((response) => {
-      dispatch(
-        notifSend({
-          message:
-            'Your account has been activated successfully, please log in',
-          kind: 'info',
-          dismissAfter: 5000,
-        })
-      );
+      // dispatch(
+      //   notifSend({
+      //     message:
+      //       'Your account has been activated successfully, please log in',
+      //     kind: 'info',
+      //     dismissAfter: 5000,
+      //   })
+      // );
 
       history.push('/login');
     })
@@ -195,7 +195,7 @@ export function activateUserAccount(formValues, dispatch, props) {
       // If request is bad...
       // Show an error to the user
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 
@@ -208,13 +208,13 @@ export function updateUserProfile(formValues, dispatch, navigate) {
       },
     })
     .then((response) => {
-      dispatch(
-        notifSend({
-          message: 'Your profile has been updated successfully',
-          kind: 'info',
-          dismissAfter: 5000,
-        })
-      );
+      // dispatch(
+      //   notifSend({
+      //     message: 'Your profile has been updated successfully',
+      //     kind: 'info',
+      //     dismissAfter: 5000,
+      //   })
+      // );
 
       navigate('/profile');
     })
@@ -223,7 +223,7 @@ export function updateUserProfile(formValues, dispatch, navigate) {
       // Show an error to the user
       console.log('error', error.response);
       const processedError = processServerError(error.response.data);
-      throw new SubmissionError(processedError);
+      // throw new SubmissionError(processedError);
     });
 }
 // util functions
