@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getUserProfile } from '../../actions/authActions';
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  console.log('user', user);
+  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getUserProfile());
+    if (token) {
+      dispatch(getUserProfile());
+    } else {
+      navigate('/login');
+    }
   }, []);
 
   const renderUser = () => {

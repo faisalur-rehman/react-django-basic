@@ -30,30 +30,9 @@ const MainContent = () => (
       <Route path='/reset_password' element={<PasswordReset />} />
       <Route path='/reset_password_done' element={<PasswordResetDone />} />
       <Route path='/reset/:uid/:token/' element={<PasswordResetConfirm />} />
-      <Route
-        path='/profile'
-        element={
-          // <RequireAuth>
-          <UserProfile />
-          // </RequireAuth>
-        }
-      />
-      <Route
-        path='/profile_edit'
-        element={
-          <RequireAuth>
-            <UserProfileEdit />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path='/change_password'
-        element={
-          <RequireAuth>
-            <PasswordChange />
-          </RequireAuth>
-        }
-      />
+      <Route path='/profile' element={<UserProfile />} />
+      <Route path='/profile_edit' element={<UserProfileEdit />} />
+      <Route path='/change_password' element={<PasswordChange />} />
       <Route component={<NoMatch />} />
     </Routes>
   </div>

@@ -98,7 +98,7 @@ export function getUserProfile() {
   };
 }
 
-export function changePassword(formValues, dispatch, props) {
+export function changePassword(formValues, dispatch, navigate) {
   const changePasswordUrl = AuthUrls.CHANGE_PASSWORD;
   const token = getUserToken(store.getState());
 
@@ -118,7 +118,7 @@ export function changePassword(formValues, dispatch, props) {
           })
         );
         // redirect to the route '/profile'
-        history.push('/profile');
+        navigate('/profile');
       })
       .catch((error) => {
         // If request is bad...
@@ -129,14 +129,14 @@ export function changePassword(formValues, dispatch, props) {
   }
 }
 
-export function resetPassword(formValues, dispatch, props) {
+export function resetPassword(formValues, dispatch, navigate) {
   const resetPasswordUrl = AuthUrls.RESET_PASSWORD;
 
   return axios
     .post(resetPasswordUrl, formValues)
     .then((response) => {
       // redirect to reset done page
-      history.push('/reset_password_done');
+      navigate('/reset_password_done');
     })
     .catch((error) => {
       // If request is bad...
@@ -199,9 +199,8 @@ export function activateUserAccount(formValues, dispatch, props) {
     });
 }
 
-export function updateUserProfile(formValues, dispatch, props) {
+export function updateUserProfile(formValues, dispatch, navigate) {
   const token = getUserToken(store.getState());
-
   return axios
     .patch(AuthUrls.USER_PROFILE, formValues, {
       headers: {
@@ -217,11 +216,12 @@ export function updateUserProfile(formValues, dispatch, props) {
         })
       );
 
-      history.push('/profile');
+      navigate('/profile');
     })
     .catch((error) => {
       // If request is bad...
       // Show an error to the user
+      console.log('error', error.response);
       const processedError = processServerError(error.response.data);
       throw new SubmissionError(processedError);
     });
