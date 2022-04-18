@@ -53,17 +53,13 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
-    "axios": "^0.17.0",
-    "lodash": "^4.17.4",
+    "axios": "^0.26.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-final-form": "^6.5.9",
     "react-redux": "^8.0.0",
     "react-router-dom": "^6.3.0",
     "redux": "^4.1.2",
-    "redux-form": "^7.1.2",
-    "redux-form-validators": "^2.1.0",
-    "redux-notifications": "^4.0.1",
     "redux-thunk": "^2.4.1"
   }
 }
