@@ -33,9 +33,9 @@ const MainContent = () => (
       <Route
         path='/profile'
         element={
-          <RequireAuth>
-            <UserProfile />{' '}
-          </RequireAuth>
+          // <RequireAuth>
+          <UserProfile />
+          // </RequireAuth>
         }
       />
       <Route

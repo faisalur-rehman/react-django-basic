@@ -4,7 +4,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { required } from 'redux-form-validators';
+// import { required } from 'redux-form-validators';
 // import { renderField, renderError } from '../../utils/renderUtils';
 import { loginUser } from '../../actions/authActions';
 
@@ -40,9 +40,16 @@ const Login = () => {
                 {({ input, meta }) => (
                   <div>
                     <label>Email</label>
-                    <input {...input} type='text' placeholder='Email' />
+                    <input
+                      {...input}
+                      type='text'
+                      placeholder='Email'
+                      className='form-control'
+                    />
                     {meta.error && meta.touched && (
-                      <span style={{ color: 'red' }}>{meta.error}</span>
+                      <div className='alert alert-danger p-1'>
+                        <small>{meta.error}</small>
+                      </div>
                     )}
                   </div>
                 )}
@@ -54,9 +61,16 @@ const Login = () => {
                 {({ input, meta }) => (
                   <div>
                     <label>Password</label>
-                    <input {...input} type='password' placeholder='Password' />
+                    <input
+                      {...input}
+                      type='password'
+                      placeholder='Password'
+                      className='form-control'
+                    />
                     {meta.error && meta.touched && (
-                      <span style={{ color: 'red' }}>{meta.error}</span>
+                      <div className='alert alert-danger p-1'>
+                        <small>{meta.error}</small>
+                      </div>
                     )}
                   </div>
                 )}

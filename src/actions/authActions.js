@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { SubmissionError } from 'redux-form';
 import history from '../utils/historyUtils';
-import { Redirect } from 'react-router-dom';
 import { actions as notifActions } from 'redux-notifications';
 const { notifSend } = notifActions;
 
@@ -46,9 +45,8 @@ export function logoutUser() {
   };
 }
 
-export function signupUser(formValues, dispatch, props) {
+export function signupUser(formValues, dispatch, navigate) {
   const signupUrl = AuthUrls.SIGNUP;
-
   return axios
     .post(signupUrl, formValues)
     .then((response) => {
@@ -60,7 +58,7 @@ export function signupUser(formValues, dispatch, props) {
 
       // email need to be verified, so don't login and send user to signup_done page.
       // redirect to signup done page.
-      history.push('/signup_done');
+      navigate('/signup_done');
     })
     .catch((error) => {
       // If request is bad...
